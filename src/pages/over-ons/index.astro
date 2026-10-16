@@ -1,0 +1,217 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+---
+
+<BaseLayout
+  title="Over Klessens Bouw"
+  description="Ontdek onze aanpak: heldere communicatie, aandacht voor detail en zorgvuldig vakmanschap."
+>
+  <Section space="medium">
+    <ContentWrapper size="wide">
+      <div class="about-hero">
+        <div class="about-hero__copy">
+          <Eyebrow>OVER KLESSENS BOUW</Eyebrow>
+          <Heading tag="h1">Goed bouwen begint met aandacht.</Heading>
+          <Paragraph>
+            Een verbouwing gaat niet alleen over muren, materialen of vierkante meters.
+            Het gaat om een plek waar u graag bent. Daarom staan we voor heldere
+            afspraken, zorgvuldig werk en aandacht voor de details.
+          </Paragraph>
+          <Button href="/contact/">Maak kennis ↗</Button>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=85"
+          alt="Sfeerbeeld van een verfijnd interieur"
+          loading="eager"
+        />
+      </div>
+    </ContentWrapper>
+  </Section>
+
+  <Section space="large" theme="light">
+    <ContentWrapper size="wide">
+      <div class="about-intro">
+        <Eyebrow>ONZE WERKWIJZE</Eyebrow>
+        <Heading tag="h2">Duidelijk in het proces. Zorgvuldig in de uitvoering.</Heading>
+      </div>
+      <div class="values">
+        <article>
+          <span>01 /</span>
+          <Heading tag="h3">Eerst luisteren</Heading>
+          <Paragraph>
+            We bespreken uw wensen, de ruimte en de mogelijkheden.
+            Zo ontstaat een plan dat bij uw situatie past.
+          </Paragraph>
+        </article>
+        <article>
+          <span>02 /</span>
+          <Heading tag="h3">Helder afstemmen</Heading>
+          <Paragraph>
+            We houden de lijnen kort en bespreken keuzes en verwachtingen
+            voordat we aan het werk gaan.
+          </Paragraph>
+        </article>
+        <article>
+          <span>03 /</span>
+          <Heading tag="h3">Netjes afronden</Heading>
+          <Paragraph>
+            Ook de laatste details verdienen aandacht.
+            Een verzorgd resultaat is waar we naartoe werken.
+          </Paragraph>
+        </article>
+      </div>
+    </ContentWrapper>
+  </Section>
+
+  <Section space="large" theme="dark">
+    <ContentWrapper size="wide">
+      <div class="about-cta">
+        <div>
+          <Heading tag="h2">Vertel ons wat u voor ogen heeft.</Heading>
+          <Paragraph>
+            Of uw plannen al concreet zijn of nog vorm moeten krijgen:
+            we denken graag met u mee.
+          </Paragraph>
+        </div>
+        <Button href="/offerte/">Offerte aanvragen ↗</Button>
+      </div>
+    </ContentWrapper>
+  </Section>
+</BaseLayout>
+
+<style lang="scss">
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+
+    &__copy {
+      display: grid;
+      justify-items: start;
+      gap: 1.75rem;
+      padding-block: clamp(2rem, 5vw, 5rem);
+
+      :global(h1) {
+        max-width: 12ch;
+        font-size: clamp(3rem, 5.5vw, 6rem);
+        line-height: 1.06;
+        letter-spacing: -0.055em;
+      }
+
+      :global(p) {
+        max-width: 56ch;
+        color: var(--text-secondary);
+        line-height: 1.85;
+      }
+    }
+
+    > img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+  }
+
+  .about-intro {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin-bottom: 3rem;
+
+    :global(h2) {
+      font-size: clamp(2.5rem, 4.5vw, 4.8rem);
+      line-height: 1.12;
+      letter-spacing: -0.045em;
+    }
+  }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-default);
+
+    article {
+      display: grid;
+      align-content: start;
+      gap: 1.5rem;
+      padding: 2.5rem;
+      border-right: 1px solid var(--border-default);
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      > span {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+
+      :global(h3) {
+        font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      }
+
+      :global(p) {
+        color: var(--text-secondary);
+        line-height: 1.8;
+      }
+    }
+  }
+
+  .about-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+
+    > div {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    :global(h2) {
+      max-width: 17ch;
+      font-size: clamp(2.5rem, 4.5vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.045em;
+    }
+
+    :global(p) {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .about-hero,
+    .values {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero > img {
+      height: 350px;
+    }
+
+    .values article,
+    .values article:first-child {
+      padding: 2rem 0;
+      border-right: 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .about-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

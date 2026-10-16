@@ -1,0 +1,17 @@
+---
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+---
+
+<Section space="large">
+  <ContentWrapper size="wide"><div class="intro"><div><Eyebrow>ONZE VISIE</Eyebrow><Heading tag="h2">Goed bouwen begint met goed luisteren.</Heading></div><div><Paragraph>Een ruimte is pas geslaagd als alles klopt. Daarom combineren we aandacht voor uw wensen met een kritische blik op materialen, verhoudingen en afwerking.</Paragraph><Button href="/over-ons/" emphasis="secondary">Meer over Klessens Bouw ↗</Button></div></div>
+  </ContentWrapper>
+</Section>
+<style lang="scss">
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,8vw,9rem);align-items:center}.intro :global(h2){font-size:clamp(2.7rem,5vw,5rem);line-height:1.1;letter-spacing:-.05em;font-weight:450;margin-top:1.5rem}.intro :global(p){font-size:1.12rem;line-height:1.85;color:var(--text-secondary);margin-bottom:2rem}@media(max-width:850px){.intro{grid-template-columns:1fr}}
+
+</style>

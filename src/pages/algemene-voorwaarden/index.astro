@@ -1,0 +1,70 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+---
+
+<BaseLayout title="Algemene voorwaarden" noindex>
+  <Section space="large">
+    <ContentWrapper size="wide">
+      <div class="legal">
+        <Heading tag="h1">Algemene voorwaarden</Heading>
+        <Paragraph>
+          Dit is een conceptpagina en bevat nog geen definitieve contractvoorwaarden.
+          Gebruik deze tekst niet als juridisch bindende voorwaarden zonder
+          controle en goedkeuring.
+        </Paragraph>
+
+        <Heading tag="h2">Toepasselijkheid</Heading>
+        <Paragraph>
+          Beschrijf hier voor welke opdrachten en klanten de voorwaarden gelden
+          en hoe deze vóór het sluiten van een overeenkomst beschikbaar worden gesteld.
+        </Paragraph>
+
+        <Heading tag="h2">Offertes en uitvoering</Heading>
+        <Paragraph>
+          Leg hier vast hoe offertes, prijswijzigingen, planning, meerwerk,
+          betaling en oplevering worden geregeld.
+        </Paragraph>
+
+        <Heading tag="h2">Garantie en aansprakelijkheid</Heading>
+        <Paragraph>
+          Voeg de daadwerkelijk gehanteerde garantie-, klachten- en
+          aansprakelijkheidsbepalingen toe en laat deze juridisch toetsen.
+        </Paragraph>
+
+        <Heading tag="h2">Contact</Heading>
+        <Paragraph>
+          Voor vragen over voorwaarden kunt u contact opnemen via
+          info@klessensbouw.nl.
+        </Paragraph>
+      </div>
+    </ContentWrapper>
+  </Section>
+</BaseLayout>
+
+<style lang="scss">
+  .legal {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 760px;
+    padding-block: 3rem;
+
+    :global(h1) {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      letter-spacing: -0.05em;
+    }
+
+    :global(h2) {
+      margin-top: 1.5rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    :global(p) {
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+  }
+</style>

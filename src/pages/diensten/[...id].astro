@@ -1,0 +1,190 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+import { services, type Service } from '@/data/services';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { id: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props as { service: Service };
+---
+
+<BaseLayout title={service.title} description={service.description}>
+  <Section space="small">
+    <ContentWrapper size="wide">
+      <div class="service-hero">
+        <div class="service-hero__heading">
+          <Eyebrow>{service.number} / ONZE DIENSTEN</Eyebrow>
+          <Heading tag="h1">{service.title}<span>.</span></Heading>
+        </div>
+
+        <div class="service-hero__summary">
+          <Paragraph>{service.intro}</Paragraph>
+          <Button href="/offerte/">Bespreek uw plannen ↗</Button>
+        </div>
+      </div>
+
+      <div class="service-visual">
+        <img
+          src={service.image}
+          alt={`Sfeerbeeld bij ${service.title.toLowerCase()}`}
+          loading="eager"
+        />
+        <span>KLESSENS BOUW / {service.title.toUpperCase()}</span>
+      </div>
+
+      <div class="service-content">
+        <div>
+          <Eyebrow>WAT WE VOOR U KUNNEN BETEKENEN</Eyebrow>
+          <Heading tag="h2">Een doordachte aanpak. Een verzorgd resultaat.</Heading>
+        </div>
+        <div>
+          <Paragraph>{service.description}</Paragraph>
+          <ul>
+            {service.points.map((point) => <li>{point}</li>)}
+          </ul>
+          <Button href="/contact/" emphasis="secondary">Stel ons een vraag ↗</Button>
+        </div>
+      </div>
+
+      <div class="service-bottom">
+        <Heading tag="h2">Plannen voor {service.title.toLowerCase()}?</Heading>
+        <Button href="/offerte/">Vraag een offerte aan ↗</Button>
+      </div>
+    </ContentWrapper>
+  </Section>
+</BaseLayout>
+
+<style lang="scss">
+  .service-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    align-items: end;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: clamp(2rem, 4vw, 4rem) 0 2.5rem;
+
+    &__heading {
+      display: grid;
+      gap: 1.25rem;
+
+      :global(h1) {
+        font-size: clamp(3.5rem, 8vw, 8rem);
+        line-height: 0.95;
+        letter-spacing: -0.065em;
+
+        span {
+          color: #a88f74;
+        }
+      }
+    }
+
+    &__summary {
+      display: grid;
+      justify-items: start;
+      gap: 1.5rem;
+
+      :global(p) {
+        max-width: 40ch;
+        color: var(--text-secondary);
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        line-height: 1.65;
+      }
+    }
+  }
+
+  .service-visual {
+    position: relative;
+    height: clamp(300px, 38vw, 540px);
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    > span {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      color: #fff;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-shadow: 0 1px 12px #000a;
+    }
+  }
+
+  .service-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 7vw, 7rem);
+    padding: clamp(3rem, 6vw, 6rem) 0;
+
+    :global(h2) {
+      margin-top: 1.5rem;
+      font-size: clamp(2.2rem, 3.5vw, 4rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    :global(p) {
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    ul {
+      margin: 1.5rem 0 2rem;
+      padding-left: 1.2rem;
+      line-height: 2.1;
+    }
+
+    li::marker {
+      color: #a88f74;
+    }
+  }
+
+  .service-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-default);
+
+    :global(h2) {
+      font-size: clamp(1.8rem, 3vw, 3rem);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .service-hero,
+    .service-content {
+      grid-template-columns: 1fr;
+    }
+
+    .service-hero {
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.5rem 0 2rem;
+    }
+
+    .service-visual {
+      height: 300px;
+    }
+
+    .service-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

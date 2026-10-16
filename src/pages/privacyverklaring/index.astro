@@ -1,0 +1,72 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+---
+
+<BaseLayout title="Privacyverklaring" noindex>
+  <Section space="large">
+    <ContentWrapper size="wide">
+      <div class="legal">
+        <Heading tag="h1">Privacyverklaring</Heading>
+        <Paragraph>
+          Dit is een concepttekst. Vul vóór publicatie de volledige bedrijfsgegevens,
+          verwerkingsgrondslagen, bewaartermijnen en gegevens van eventuele
+          verwerkers in. Laat de tekst juridisch controleren.
+        </Paragraph>
+
+        <Heading tag="h2">Welke gegevens ontvangen wij?</Heading>
+        <Paragraph>
+          Wanneer u het contact- of offerteformulier gebruikt, kunt u uw naam,
+          e-mailadres, telefoonnummer, projectlocatie en informatie over uw
+          werkzaamheden aan ons verstrekken.
+        </Paragraph>
+
+        <Heading tag="h2">Waarvoor gebruiken wij deze gegevens?</Heading>
+        <Paragraph>
+          Om vragen en offerteaanvragen te beantwoorden en contact met u op
+          te nemen over uw project. De huidige formulieren openen uw
+          e-mailprogramma; de website slaat deze gegevens niet zelf op.
+        </Paragraph>
+
+        <Heading tag="h2">Uw rechten en contact</Heading>
+        <Paragraph>
+          U kunt contact opnemen over inzage, correctie of verwijdering van
+          persoonsgegevens via info@klessensbouw.nl.
+        </Paragraph>
+
+        <Heading tag="h2">Nog aan te vullen</Heading>
+        <Paragraph>
+          Controleer vóór livegang eventuele analytics, cookies, externe
+          afbeeldingen, hosting, ontvangers, beveiliging en bewaartermijnen.
+        </Paragraph>
+      </div>
+    </ContentWrapper>
+  </Section>
+</BaseLayout>
+
+<style lang="scss">
+  .legal {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 760px;
+    padding-block: 3rem;
+
+    :global(h1) {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      letter-spacing: -0.05em;
+    }
+
+    :global(h2) {
+      margin-top: 1.5rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    :global(p) {
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+  }
+</style>

@@ -1,0 +1,88 @@
+---
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import { services } from '@/data/services';
+---
+
+<Section space="large" theme="light">
+  <ContentWrapper size="wide">
+    <Eyebrow>ONZE EXPERTISE</Eyebrow>
+    <Heading tag="h2" class="section-title">Ambacht in elke fase.</Heading>
+
+    <div class="services">
+      {services.map((service) => (
+        <a class="service-card" href={`/diensten/${service.id}/`}>
+          <span class="service-card__eyebrow">
+            {service.number} / EXPERTISE
+          </span>
+          <Heading tag="h3">{service.title}</Heading>
+          <Paragraph>{service.intro}</Paragraph>
+          <span class="service-card__link">ONTDEK MEER ↗</span>
+        </a>
+      ))}
+    </div>
+  </ContentWrapper>
+</Section>
+
+<style lang="scss">
+  .section-title {
+    margin: 1.5rem 0 3rem;
+    font-size: clamp(2.7rem, 5vw, 5rem);
+    font-weight: 450;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--border-default);
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+    padding: clamp(1.5rem, 3vw, 3rem);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-right: 1px solid var(--border-default);
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    &__eyebrow,
+    &__link {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+    }
+
+    :global(h3) {
+      margin-top: auto;
+      font-size: 2rem;
+    }
+
+    :global(p) {
+      margin: 1rem 0 2rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .services {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      min-height: 240px;
+      border-right: 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+  }
+</style>

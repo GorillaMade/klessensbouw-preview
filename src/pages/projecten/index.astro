@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import ProjectCards from '@/components/sections/ProjectCards.astro';
+---
+<BaseLayout title="Projecten" description="Bekijk projecten van Klessens Bouw."><Section space="large"><ContentWrapper size="wide"><div class="page-intro"><Eyebrow>ONS WERK</Eyebrow><Heading tag="h1">Werk dat voor zichzelf spreekt.</Heading><Paragraph>Een selectie van onze werkzaamheden. Bekijk vier inspirerende conceptprojecten met interactieve beeldvergelijkingen. Dit zijn sfeer- en voorbeeldbeelden, geen uitgevoerde projecten van Klessens Bouw.</Paragraph></div><ProjectCards/></ContentWrapper></Section></BaseLayout>
+<style lang="scss">.page-intro{max-width:54rem;margin-bottom:4rem}.page-intro :global(h1){font-size:clamp(3rem,7vw,6rem);line-height:1.05;letter-spacing:-.05em;margin:1.5rem 0}.page-intro :global(p){color:var(--text-secondary);line-height:1.8}</style>

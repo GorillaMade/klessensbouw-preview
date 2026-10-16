@@ -1,0 +1,18 @@
+---
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+import ProjectCards from '@/components/sections/ProjectCards.astro';
+---
+
+<Section space="large">
+  <ContentWrapper size="wide"><div class="projects-head"><div><Eyebrow>GESELECTEERD WERK</Eyebrow><Heading tag="h2">Onze projecten.</Heading></div><Button href="/projecten/" emphasis="secondary">Alle projecten ↗</Button></div><ProjectCards/>
+  </ContentWrapper>
+</Section>
+<style lang="scss">
+.projects-head{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:3rem}.projects-head :global(h2){font-size:clamp(2.7rem,5vw,5rem);line-height:1.1;letter-spacing:-.05em;font-weight:450;margin-top:1.5rem}@media(max-width:850px){.projects-head{align-items:start;flex-direction:column}}
+
+</style>

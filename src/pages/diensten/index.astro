@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+---
+<BaseLayout title="Diensten"><Section space="large"><ContentWrapper size="wide"><div class="head"><Eyebrow>EXPERTISE</Eyebrow><Heading tag="h1">Bouwen met aandacht.</Heading><Paragraph>Voor iedere ruimte, iedere wens en iedere fase een zorgvuldige aanpak.</Paragraph></div><div class="services"><article id="verbouw"><a class="service-link" href="/diensten/verbouw/"><span>01</span><Heading tag="h2">Verbouw</Heading><Paragraph>Meer ruimte en een indeling die past bij uw leven.</Paragraph></a></article><article id="renovatie"><a class="service-link" href="/diensten/renovatie/"><span>02</span><Heading tag="h2">Renovatie</Heading><Paragraph>Een bestaande ruimte vernieuwen met respect voor het karakter.</Paragraph></a></article><article id="onderhoud"><a class="service-link" href="/diensten/onderhoud/"><span>03</span><Heading tag="h2">Onderhoud</Heading><Paragraph>Uw pand in goede conditie houden met degelijk vakwerk.</Paragraph></a></article></div><div class="cta"><Heading tag="h2">Een project bespreken?</Heading><Button href="/offerte/">Offerte aanvragen ↗</Button></div></ContentWrapper></Section></BaseLayout>
+<style lang="scss">.head{padding:3rem 0 5rem;max-width:58rem}.head :global(h1){font-size:clamp(3rem,7vw,6rem);line-height:1.05;letter-spacing:-.05em;margin:1.5rem 0}.head :global(p){color:var(--text-secondary)}.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-default);border:1px solid var(--border-default)}.service-link{display:block;color:inherit;text-decoration:none;height:100%}.services article{padding:3rem;background:var(--surface-page);min-height:280px}.services span{color:var(--brand-500)}.services :global(h2){margin:3rem 0 1rem}.services :global(p){line-height:1.8;color:var(--text-secondary)}.cta{padding:5rem 0;display:grid;gap:2rem;justify-items:start}@media(max-width:800px){.services{grid-template-columns:1fr}}</style>

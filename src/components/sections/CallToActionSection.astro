@@ -1,0 +1,17 @@
+---
+import Section from '@/components/wrapper/Section.astro';
+import ContentWrapper from '@/components/wrapper/ContentWrapper.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+---
+
+<Section space="large" theme="dark">
+  <ContentWrapper size="wide"><div class="end"><Eyebrow>UW PLANNEN, ONZE AANDACHT</Eyebrow><Heading tag="h2">Samen iets bijzonders realiseren?</Heading><Paragraph>Vertel ons wat u voor ogen heeft. Wij denken graag met u mee.</Paragraph><Button href="/offerte/">Offerte aanvragen ↗</Button></div>
+  </ContentWrapper>
+</Section>
+<style lang="scss">
+.end{text-align:center;display:grid;justify-items:center;gap:2rem;padding:4rem 0}.end :global(h2){font-size:clamp(2.7rem,5vw,5rem);line-height:1.1;letter-spacing:-.05em;font-weight:450;max-width:15ch}.end :global(p){font-size:1.1rem}
+
+</style>

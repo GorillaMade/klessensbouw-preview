@@ -1,0 +1,89 @@
+---
+import '../../sass/global.scss';
+import { site } from '@/config/site';
+import BaseHead from '@/components/utility/BaseHead.astro';
+import JsonLd from '@/components/utility/JsonLd.astro';
+import SkipLink from '@/components/global/SkipLink.astro';
+import Header from '@/components/global/Header.astro';
+import SiteNav from '@/components/global/SiteNav.astro';
+import SiteNavLink from '@/components/global/SiteNavLink.astro';
+import SiteNavDropdown from '@/components/global/SiteNavDropdown.astro';
+import Nav from '@/components/global/Nav.astro';
+import NavLink from '@/components/global/NavLink.astro';
+import Footer from '@/components/global/Footer.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Button from '@/components/Button.astro';
+import Dropdown from '@/components/interactive/Dropdown.astro';
+interface Props { title?:string; description?:string; noindex?:boolean; }
+const {title,description,noindex}=Astro.props;
+const schema={ '@context':'https://schema.org','@type':'WebSite',name:site.name,url:site.url,description:site.description,inLanguage:site.language };
+---
+<!doctype html>
+<html lang={site.language} data-theme="light">
+
+  <head>
+    <BaseHead title={title} description={description} noindex={noindex} />
+    <JsonLd data={schema} />
+    <slot name="head" />
+  </head>
+
+<body>
+    <SkipLink href="#main">Ga naar inhoud</SkipLink>
+    <Header position="sticky">
+      <a href="/" slot="brand" class="brand-link" aria-label="Klessens Bouw, homepage"><img src="/klessens-k.svg" width="42" height="44" alt="" /><span class="brand-wordmark"><strong>KLESSENS</strong><small>BOUW</small></span></a>
+      <SiteNav slot="navigation" id="site-navigation" label="Hoofdnavigatie">
+        <SiteNavLink href="/">Home</SiteNavLink>
+        <SiteNavLink href="/diensten/">Diensten</SiteNavLink>
+        <SiteNavLink href="/projecten/">Projecten</SiteNavLink>
+        <SiteNavLink href="/over-ons/">Over ons</SiteNavLink>
+        <SiteNavLink href="/contact/">Contact</SiteNavLink>
+      </SiteNav>
+      <Button slot="action" href="/offerte/" class="header-quote">Offerte aanvragen ↗</Button>
+    </Header>
+    <main id="main">
+      <slot />
+    </main>
+
+
+    <Footer theme="dark" copyright="Klessens Bouw">
+      <a href="/" slot="brand" class="footer-wordmark">KLESSENS <span>BOUW</span></a>
+      <div slot="company"><Heading tag="h3">Met aandacht gebouwd.</Heading><Paragraph>Verbouw, renovatie en onderhoud.</Paragraph></div>
+      <div slot="services">
+        <a href="/diensten/">Diensten</a>
+        <a href="/projecten/">Projecten</a>
+        <a href="/offerte/">Offerte aanvragen</a>
+        <a href="/privacyverklaring/">Privacyverklaring</a>
+        <a href="/algemene-voorwaarden/">Algemene voorwaarden</a>
+      </div>
+      <div slot="contact"><a href="mailto:info@klessensbouw.nl">info@klessensbouw.nl</a><a href="/contact/">Contact</a></div>
+    </Footer>
+</body>
+
+</html>
+<style lang="scss">
+  .site-footer {
+    padding-block: var(--space-s);
+    background: var(--surface-page)
+  }
+
+  .site-footer {
+    border-block-start: 1px solid var(--border-default)
+  }
+
+  .site-logo {
+    font-weight: var(--fw-heading);
+    text-decoration: none
+  }
+
+  .site-header :global(nav) {
+    display: flex;
+    gap: var(--space-s)
+  }
+.brand-link{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--text-primary);letter-spacing:.13em;line-height:1}.brand-link .brand-wordmark{display:grid;gap:.25rem}.brand-link small{letter-spacing:.3em;font-size:.65rem}.footer-wordmark{font-size:1.5rem;letter-spacing:.12em;font-weight:700;text-decoration:none;color:inherit}.footer-wordmark span{font-weight:300}.site-footer :global(a){display:block;margin-bottom:.7rem;color:inherit;text-decoration:none}
+  @media (max-width: 975px) {
+    .brand-link .brand-wordmark {
+      display: none;
+    }
+  }
+</style>

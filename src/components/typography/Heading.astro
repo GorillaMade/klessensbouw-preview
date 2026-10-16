@@ -1,0 +1,5 @@
+---
+interface Props { tag?: 'h1'|'h2'|'h3'|'h4'|'h5'|'h6'; class?: string; render?: boolean }
+const {tag:Tag='h2',class:className,render=true}=Astro.props;
+---
+{render && <Tag class={className}><slot /></Tag>}

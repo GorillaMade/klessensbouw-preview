@@ -1,0 +1,35 @@
+---
+interface Props { before?: string; after?: string; alt?: string; initial?: number }
+const {before,after,alt='Project',initial=50}=Astro.props;
+const start=Math.min(100,Math.max(0,initial));
+---
+{before && after && (
+ <div class="before-after" data-before-after style={`--split:${start}%`}>
+  <div class="before-after__image"><img src={after} alt={`${alt}: na`} loading="lazy" decoding="async" /></div>
+  <div class="before-after__image before-after__before"><img src={before} alt={`${alt}: voor`} loading="lazy" decoding="async" /></div>
+  <span class="before-after__label before-after__label--before">VOOR</span>
+  <span class="before-after__label before-after__label--after">NA</span>
+  <div class="before-after__handle" aria-hidden="true"><span>‹ &nbsp; ›</span></div>
+  <input class="before-after__range" type="range" min="0" max="100" value={start} aria-label={`Vergelijk ${alt} voor en na`} />
+ </div>
+)}
+<script>
+ document.querySelectorAll<HTMLElement>('[data-before-after]').forEach(el=>{
+  const range=el.querySelector<HTMLInputElement>('.before-after__range');
+  if(!range)return;
+  range.addEventListener('input',()=>el.style.setProperty('--split',`${range.value}%`));
+ });
+</script>
+<style lang="scss">
+.before-after{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:16/10;min-height:240px;background:var(--surface-subtle);touch-action:pan-y;user-select:none}
+.before-after__image{position:absolute;inset:0;overflow:hidden}
+.before-after__image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.before-after__before{clip-path:inset(0 calc(100% - var(--split)) 0 0)}
+.before-after__handle{position:absolute;inset-block:0;left:var(--split);width:2px;background:white;transform:translateX(-50%);pointer-events:none;z-index:2;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 5px rgba(0,0,0,.15))}
+.before-after__handle span{display:grid;place-items:center;flex-shrink:0;width:3.25rem;height:3.25rem;border:2px solid white;border-radius:50%;background:var(--neutral-900);color:var(--neutral-100);font-size:1.35rem;white-space:nowrap}
+.before-after__label{position:absolute;top:1.25rem;z-index:2;background:var(--neutral-900);color:var(--neutral-100);padding:.65rem 1rem;font-size:.7rem;letter-spacing:.15em;pointer-events:none}
+.before-after__label--before{left:1.25rem}.before-after__label--after{right:1.25rem}
+.before-after__range{position:absolute;inset:0;z-index:3;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;appearance:none;-webkit-appearance:none}
+.before-after:focus-within{outline:3px solid var(--brand-500);outline-offset:3px}
+@media(max-width:600px){.before-after{aspect-ratio:4/5}.before-after__label{top:.75rem;padding:.45rem .65rem}}
+</style>

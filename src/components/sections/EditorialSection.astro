@@ -1,0 +1,70 @@
+---
+import Section from '@/components/wrapper/Section.astro';
+import Heading from '@/components/typography/Heading.astro';
+import Paragraph from '@/components/typography/Paragraph.astro';
+import Eyebrow from '@/components/typography/Eyebrow.astro';
+import Button from '@/components/Button.astro';
+---
+
+<Section space="small">
+  <div class="editorial">
+    <div class="editorial__image" role="img" aria-label="Licht interieur"></div>
+
+    <div class="editorial__content" data-theme="dark">
+      <Eyebrow>DETAIL MAAKT HET VERSCHIL</Eyebrow>
+
+      <Heading tag="h2">
+        Een goed resultaat voelt vanzelfsprekend.
+      </Heading>
+
+      <Paragraph>
+        Van een eerste idee tot de laatste details. We werken met aandacht
+        voor het geheel én voor wat u dagelijks ziet en voelt.
+      </Paragraph>
+
+      <Button href="/offerte/">Bespreek uw project ↗</Button>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss">
+  .editorial {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 590px;
+  }
+
+  .editorial__image {
+    min-height: 390px;
+    background: url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85")
+      center / cover;
+  }
+
+  .editorial__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: clamp(3rem, 7vw, 7rem);
+    background: var(--surface-page);
+    color: var(--text-primary);
+
+    :global(h2) {
+      font-size: clamp(2.7rem, 4.5vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.05em;
+    }
+
+    :global(p) {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .editorial {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
